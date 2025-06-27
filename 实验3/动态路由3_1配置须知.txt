@@ -1,0 +1,17 @@
+在上次静态路由配置使用的网络上，分别使用RIP和OSPF配置，
+RIP用图形界面配置即可，OSPF用命令行，具体是：
+router ospf 1
+network 网络号 反掩码 area 0
+
+...
+ex
+上面所做即可。
+
+但是三层交换机的配置（这里是fa0/3）必须先这样：
+int fa0/3
+no swi
+ip add 网关 掩码
+ex
+
+ip routing
+之后才能开始RIP或者OSPF配置！！！
